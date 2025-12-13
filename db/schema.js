@@ -152,3 +152,11 @@ export const housekeeping = pgTable("housekeeping", {
   scheduled_at: timestamp("scheduled_at"),
   completed_at: timestamp("completed_at"),
 });
+
+export const messages = pgTable("messages", {
+  id: serial("id").primaryKey(),
+  sender_id: integer("sender_id").notNull(),
+  receiver_id: integer("receiver_id").notNull(),
+  content: text("content").notNull(),
+  created_at: timestamp("created_at").defaultNow(),
+});

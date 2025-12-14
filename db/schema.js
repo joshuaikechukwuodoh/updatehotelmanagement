@@ -160,3 +160,12 @@ export const messages = pgTable("messages", {
   content: text("content").notNull(),
   created_at: timestamp("created_at").defaultNow(),
 });
+
+export const kyc = pgTable("kyc", {
+  id: serial("id").primaryKey(),
+  user_id: integer("user_id").notNull(),
+  document_type: varchar("document_type", { length: 50 }),
+  document_url: text("document_url").notNull(),
+  status: varchar("status", { length: 20 }).default("PENDING"),
+  created_at: timestamp("created_at").defaultNow(),
+});
